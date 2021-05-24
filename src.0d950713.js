@@ -7,4 +7,4 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss");var e=r(require("./js/refs")),s=r(require("./js/fetchCountries"));function r(e){return e&&e.__esModule?e:{default:e}}
 },{"./sass/main.scss":"clu1","./js/refs":"VyiV","./js/fetchCountries":"irxn"}]},{},["Focm"], null)
-//# sourceMappingURL=/goit-js-hw-12-countries/src.61c405a5.js.map
+//# sourceMappingURL=/goit-js-hw-12-countries/src.0d950713.js.map
