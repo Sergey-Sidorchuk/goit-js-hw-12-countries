@@ -18,7 +18,8 @@ const searchInput = e => {
     return;
 
     API.fetchCountries(searchQuery)
-    .then(dataShow);
+        .then(dataShow)
+        .catch(noticeInfo);
 };
 
 const dataShow = countries => {
@@ -28,8 +29,9 @@ const dataShow = countries => {
             delay: 5000,
         });  
     };
+   
     if (countries.status === 404) {
-                errorMessage('Nothing was found for your query!')
+        errorMessage('Nothing was found for your query!');
             }
     if (countries.length > 1 && countries.length < 10) {
         refs.countriesMrkp.innerHTML = previewCountryTpl(countries);
@@ -46,9 +48,13 @@ function errorMessage(message) {
             delay: 2200,    
         });
 }
+const noticeInfo = () => {
+    notice({
+        text: 'Invalid entered value',
+        delay:2000,
+    });
+}
 refs.search.addEventListener('input', debounce(searchInput, 500));
-
-
 
 
 
