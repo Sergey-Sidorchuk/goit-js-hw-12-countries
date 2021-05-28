@@ -14,12 +14,13 @@ const searchInput = e => {
     const searchQuery = e.target.value;
     refs.countriesMrkp.innerHTML = '';
 
-    if (searchQuery.length < 1)
-    return;
+    if (searchQuery.length < 1 && searchQuery === " " && searchQuery=== ".")
+        return;
+    
+        API.fetchCountries(searchQuery)
+            .then(dataShow)
+            .catch(noticeInfo);
 
-    API.fetchCountries(searchQuery)
-        .then(dataShow)
-        .catch(noticeInfo);
 };
 
 const dataShow = countries => {
@@ -29,8 +30,8 @@ const dataShow = countries => {
             delay: 5000,
         });  
     };
-   
-    if (countries.status === 404) {
+    
+     if (countries.status === 404) {
         errorMessage('Nothing was found for your query!');
             }
     if (countries.length > 1 && countries.length < 10) {
@@ -45,15 +46,15 @@ const dataShow = countries => {
 function errorMessage(message) {
     error ({
             title:`${message}`,
-            delay: 2200,    
+            delay: 2000,    
         });
 }
 const noticeInfo = () => {
-    notice({
-        text: 'Invalid entered value',
-        delay:2000,
-    });
-}
+        notice({
+            text: 'Invalid entered value',
+            delay: 2000,
+        });
+    }
 refs.search.addEventListener('input', debounce(searchInput, 500));
 
 
